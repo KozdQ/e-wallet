@@ -1,9 +1,17 @@
 import React from "react";
+import PropTypes from "prop-types";
 
-function Bottom() {
+function Bottom(props: any) {
     return (
-        <div></div>
+        <div className={"p-2 mb-2 rounded " + props.extraStyle}>
+            {props.name}
+        </div>
     )
+}
+
+Bottom.propTypes = {
+    extraStyle: PropTypes.string,
+    name: PropTypes.string.isRequired
 }
 
 export default Bottom;
