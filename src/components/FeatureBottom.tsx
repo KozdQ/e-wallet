@@ -4,10 +4,10 @@ import NormalText from "./NormalText";
 
 function FeatureBottom(props: any) {
     return (
-        <div className={props.extraStyle}>
-            <img className={"invert w-7 h-7 m-1"} src={props.iconUrl} alt={props.name + " icon"}/>
+        <div className={"flex flex-col items-center " + props.extraStyle}>
+            <img className={"invert w-7 h-7 "} src={props.iconUrl} alt={props.name + " icon"}/>
             <NormalText
-                extraStyle={"text-white"}
+                extraStyle={"text-white text-xs font-semibold"}
                 text={props.name}/>
         </div>
     )
