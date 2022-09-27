@@ -7,7 +7,8 @@ function HistoryTransaction(props: any) {
         <div className={"bg-white w-full mb-1.5 p-2 border-b-2 border-r"}>
             <div className={"flex flex-row justify-between"}>
                 <div className={"flex flex-row"}>
-                    <img className={"w-5 h-5 mt-auto mb-auto ml-3 mr-3"} src={props.iconUrl} alt={props.name + " icon"}/>
+                    <img className={"w-5 h-5 mt-auto mb-auto ml-3 mr-3"} src={props.iconUrl}
+                         alt={props.name + " icon"}/>
                     <div className={"flex flex-col"}>
                         <div className={"text-xs font-semibold pb-0.5 pt-1"}>{props.name}</div>
                         <div className={"text-xs font-light italic text-slate-600"}>{props.date}</div>

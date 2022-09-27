@@ -8,7 +8,7 @@ import Bottom from "../components/Bottom";
 function Onboarding() {
     return (
         <div>
-            <Image src={mainPoster} alt={"Poster onBoarding page"} />
+            <Image src={mainPoster} alt={"Poster onBoarding page"}/>
             <div className={"w-full"}>
                 <HeadingText
                     extraStyle={"text-center text-2xl mt-5"}
