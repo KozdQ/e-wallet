@@ -4,7 +4,7 @@ import NormalText from "./NormalText";
 
 function HistoryTransaction(props: any) {
     return (
-        <div className={"bg-white w-full mb-2 p-2 border-b-2 border-r"}>
+        <div className={"bg-white w-full mb-1.5 p-2 border-b-2 border-r"}>
             <div className={"flex flex-row justify-between"}>
                 <div className={"flex flex-row"}>
                     <img className={"w-5 h-5 mt-auto mb-auto ml-3 mr-3"} src={props.iconUrl} alt={props.name + " icon"}/>

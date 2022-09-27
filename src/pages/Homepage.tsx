@@ -52,7 +52,7 @@ function Homepage() {
                             text={"See All"}/>
                     </div>
                     <div className={"h-96 overflow-auto"}>
-                        {[...Array(10)].map((e, i) => <HistoryTransaction
+                        {[...Array(6)].map((e, i) => <HistoryTransaction
                             iconUrl={PlusIcon}
                             name={"Top up the wallet from OCB"}
                             date={"26/09/2022"}/>)}
