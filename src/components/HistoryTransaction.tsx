@@ -25,7 +25,7 @@ function HistoryTransaction(props: any) {
     )
 }
 
-HistoryTransaction.propsType = {
+HistoryTransaction.propTypes = {
     iconUrl: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
     date: PropTypes.string.isRequired
