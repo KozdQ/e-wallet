@@ -26,7 +26,7 @@ function Topup() {
                     <div className={"text-xs italic font-bold leading-6"}>{"1.234.456" + "\u20AB"}</div>
                 </div>
                 <AmountInput/>
-                {/*<MoneySource iconUrl={ACB} name={"OCB"}/>*/}
+                {/*<AddMoneySourcePage iconUrl={ACB} name={"OCB"}/>*/}
                 <EmptyMoneySource/>
                 <NumPad/>
             </div>
