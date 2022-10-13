@@ -4,8 +4,10 @@ import NormalText from "../components/NormalText";
 import Image from "../components/Image";
 import mainPoster from "../resources/images/mainPoster.png"
 import Bottom from "../components/Bottom";
+import {useNavigate} from "react-router-dom";
 
 function Onboarding() {
+    const navigate = useNavigate();
     return (
         <div>
             <Image src={mainPoster} alt={"Poster onBoarding page"}/>
@@ -19,8 +21,9 @@ function Onboarding() {
             </div>
             <div>
                 <Bottom
-                    extraStyle={"ml-8 mr-8 bg-black text-white text-center font-bold"}
-                    name={"Login"}/>
+                    extraStyle={"ml-8 mr-8 bg-black text-white text-center font-bold hover:cursor-pointer"}
+                    name={"Login"}
+                    onClick={() => navigate("/login")}/>
                 <Bottom
                     extraStyle={"ml-8 mr-8 bg-white text-black text-center font-bold border-2 border-black"}
                     name={"Sign up"}/>

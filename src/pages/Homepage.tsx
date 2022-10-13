@@ -6,8 +6,10 @@ import PlusIcon from "../resources/images/plus.png";
 import SendIcon from "../resources/images/send.png";
 import WithdrawIcon from "../resources/images/withdraw.png";
 import HistoryTransaction from "../components/HistoryTransaction";
+import {useNavigate} from "react-router-dom";
 
 function Homepage() {
+    const navigate = useNavigate();
     return (
         <div>
             <HeadingText
@@ -33,7 +35,8 @@ function Homepage() {
                         className={" justify-around p-2 flex flex-row bg-black rounded-md border border-white"}>
                         <FeatureBottom
                             name={"Topup"}
-                            iconUrl={PlusIcon}/>
+                            iconUrl={PlusIcon}
+                            onClick={() => navigate("/topup")}/>
                         <FeatureBottom
                             name={"Send"}
                             iconUrl={SendIcon}/>
