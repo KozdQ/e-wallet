@@ -8,6 +8,8 @@ import NormalInput from "../components/NormalInput";
 import {useNavigate} from "react-router-dom";
 
 function Login() {
+    localStorage.setItem("phone", "")
+
     const navigate = useNavigate();
 
     const [phone, setPhone] = useState();
@@ -26,6 +28,8 @@ function Login() {
                     name={"Enter"}
                     onClick={() => {
                         console.log(phone, " ", password)
+                        // @ts-ignore
+                        localStorage.setItem("phone", phone)
                         navigate("/homepage")
                     }}/>
             </div>

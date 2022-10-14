@@ -1,4 +1,4 @@
-import React from "react";
+import React, {ChangeEvent, useEffect, useState} from "react";
 import HeadingText from "../components/HeadingText";
 import NormalText from "../components/NormalText";
 import FeatureBottom from "../components/FeatureBottom";
@@ -7,9 +7,39 @@ import SendIcon from "../resources/images/send.png";
 import WithdrawIcon from "../resources/images/withdraw.png";
 import HistoryTransaction from "../components/HistoryTransaction";
 import {useNavigate} from "react-router-dom";
+import axios from "axios";
+import {string} from "prop-types";
 
 function Homepage() {
     const navigate = useNavigate();
+    const phone = localStorage.getItem("phone");
+    const [amount, setAmount] = useState("0")
+    const [listTrans, setListTrans] = useState([])
+
+    function formatCurrency(amount: string) {
+        for (let i = amount.length - 3; i > 0; i -= 3) {
+            amount = amount.slice(0, i) + "." + amount.slice(i);
+        }
+        return amount;
+    }
+
+    useEffect(() => {
+        axios.post('http://localhost:8082/e-wallet/get-balance', {
+            phone: phone,
+        }, {
+            headers: {
+                'Access-Control-Allow-Origin': '*',
+                'Content-Type': 'application/x-www-form-urlencoded',
+            }
+        })
+            .then(function (response) {
+                setAmount(formatCurrency(response.data.balance))
+                console.log(response)
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    })
     return (
         <div>
             <HeadingText
@@ -21,14 +51,14 @@ function Homepage() {
                     <div>
                         <NormalText
                             extraStyle={"text-lg font-medium"}
-                            text={"Hi, " + "Hoài Bão"}/>
+                            text={"Hi, " + phone}/>
                         <NormalText
                             extraStyle={"text-xs italic text-slate-600"}
                             text={"Total available balance"}/>
                     </div>
                     <NormalText
                         extraStyle={"font-bold leading-10"}
-                        text={"1.234.456" + "\u20AB"}/>
+                        text={amount + "\u20AB"}/>
                 </div>
                 <div className={"mt-3 mb-3 bg-white rounded-md border"}>
                     <div
@@ -55,7 +85,7 @@ function Homepage() {
                             text={"See All"}/>
                     </div>
                     <div className={"h-96 overflow-auto"}>
-                        {[...Array(6)].map((e, i) => <HistoryTransaction
+                        {listTrans.length != 0 && [...Array(6)].map((e, i) => <HistoryTransaction
                             iconUrl={PlusIcon}
                             name={"Top up the wallet from OCB"}
                             date={"26/09/2022"}/>)}
