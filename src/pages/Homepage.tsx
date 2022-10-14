@@ -1,4 +1,4 @@
-import React, {ChangeEvent, useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import HeadingText from "../components/HeadingText";
 import NormalText from "../components/NormalText";
 import FeatureBottom from "../components/FeatureBottom";
@@ -8,13 +8,17 @@ import WithdrawIcon from "../resources/images/withdraw.png";
 import HistoryTransaction from "../components/HistoryTransaction";
 import {useNavigate} from "react-router-dom";
 import axios from "axios";
-import {string} from "prop-types";
 
 function Homepage() {
     const navigate = useNavigate();
     const phone = localStorage.getItem("phone");
     const [amount, setAmount] = useState("0")
-    const [listTrans, setListTrans] = useState([])
+    const [listTrans, setListTrans] = useState([{
+        "appTransId": "2022101400000002",
+        "phone": "0969189947",
+        "paymentInfo": "PaymentInfo(accessToken=MDk2OTE4OTk0Ny4xNjY1NzE5MTQxNjUw, phone=0969189947, appId=454, appTransId=2022101400000002, tranStatus=RECORD_BOOKKEEPING, reqDate=1665719146005, amount=10000, chargeInfo=xxx)",
+        "amount": "10000"
+    }])
 
     function formatCurrency(amount: string) {
         for (let i = amount.length - 3; i > 0; i -= 3) {
@@ -23,6 +27,9 @@ function Homepage() {
         return amount;
     }
 
+    function date() {
+        return new Date(Date.now()).toLocaleDateString();
+    }
     useEffect(() => {
         axios.post('http://localhost:8082/e-wallet/get-balance', {
             phone: phone,
@@ -39,7 +46,23 @@ function Homepage() {
             .catch(function (error) {
                 console.log(error);
             });
-    })
+
+        axios.post('http://localhost:8082/e-wallet/get-list-transaction', {
+            phone: phone,
+        }, {
+            headers: {
+                'Access-Control-Allow-Origin': '*',
+                'Content-Type': 'application/x-www-form-urlencoded',
+            }
+        })
+            .then(function (response) {
+                setListTrans(response.data.list)
+                console.log(response)
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    }, [phone])
     return (
         <div>
             <HeadingText
@@ -85,10 +108,12 @@ function Homepage() {
                             text={"See All"}/>
                     </div>
                     <div className={"h-96 overflow-auto"}>
-                        {listTrans.length != 0 && [...Array(6)].map((e, i) => <HistoryTransaction
+                        {listTrans.length !== 0 && listTrans.map((e, i) => <HistoryTransaction
+                            key={e.appTransId}
                             iconUrl={PlusIcon}
                             name={"Top up the wallet from OCB"}
-                            date={"26/09/2022"}/>)}
+                            date={date()}
+                            amount={formatCurrency(e.amount)}/>)}
                     </div>
                 </div>
 

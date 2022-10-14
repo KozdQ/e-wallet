@@ -10,7 +10,7 @@ function EmptyMoneySource(props: any) {
                     <img className={"h-2/3 mt-auto mb-auto ml-3 mr-3"} src={""} alt={""}/>
                     <div
                         className={"w-full leading-10 text-xl italic font-light text-center text-slate-400 placeholder:text-sm outline-none "}>
-                        {"no source of money"}
+                        {"no source of fund"}
                     </div>
                 </div>
                 <img className={"h-2/3 mt-auto mb-auto"} src={AddCard} alt={"add card"}/>

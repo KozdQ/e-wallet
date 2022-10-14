@@ -17,7 +17,7 @@ function HistoryTransaction(props: any) {
                 <div>
                     <NormalText
                         extraStyle={"font-semibold text-sm leading-10 mr-1 w-24 overflow-x-scroll rtl"}
-                        text={"1.234.456" + "\u20AB"}/>
+                        text={props.amount + "\u20AB"}/>
                 </div>
 
             </div>
@@ -28,7 +28,8 @@ function HistoryTransaction(props: any) {
 HistoryTransaction.propTypes = {
     iconUrl: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
-    date: PropTypes.string.isRequired
+    date: PropTypes.string.isRequired,
+    amount: PropTypes.string.isRequired,
 }
 
 export default HistoryTransaction;
