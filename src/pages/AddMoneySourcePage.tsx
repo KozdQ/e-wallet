@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from "react";
 import BackIcon from "../resources/images/back.png";
-import AmountInput from "../components/AmountInput";
 import Vietcombank from "../resources/images/banks/Vietcombank.svg"
 import ACB from "../resources/images/banks/ACB.svg"
 import BIDV from "../resources/images/banks/BIDV.webp"
@@ -18,7 +17,7 @@ function AddMoneySourcePage() {
 
     const phone = localStorage.getItem("phone")
     const accessToken = localStorage.getItem("accessToken")
-    const [iconBank , setIconBank] = useState(ACB)
+    const [iconBank, setIconBank] = useState(ACB)
     const [bankCode, setBankCode] = useState("ACB")
     const [cardNumber, setCardNumber] = useState("")
 
@@ -56,6 +55,7 @@ function AddMoneySourcePage() {
                     <div className={"text-xs font-semibold ml-2"}>Select type</div>
                     <select
                         className={"w-full mt-1 p-2 border text-center font-bold text-xl font-san text-slate-600 rounded-md placeholder:italic placeholder:font-light"}
+                        data-testid={"select-field"}
                         onChange={(event) => {
                             const sel = event.currentTarget
                             setIconBank(sel.value)
@@ -71,9 +71,11 @@ function AddMoneySourcePage() {
                         <option value={Vietcombank}>Vietcombank</option>
                     </select>
                 </div>
-                <AddMoneySource iconUrl={iconBank} name={bankCode} setCardNumber={(cardNumber: string) => {setCardNumber(cardNumber)}}/>
+                <AddMoneySource iconUrl={iconBank} name={bankCode} setCardNumber={(cardNumber: string) => {
+                    setCardNumber(cardNumber)
+                }}/>
                 <NumPad onClick={() => {
-                    console.log(phone, " ", bankCode, " ", cardNumber.slice(0,6), " ", cardNumber.slice(12))
+                    console.log(phone, " ", bankCode, " ", cardNumber.slice(0, 6), " ", cardNumber.slice(12))
                     if (cardNumber.length < 16) {
                         console.log("card number is not valid");
                     } else {

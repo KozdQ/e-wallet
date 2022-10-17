@@ -149,7 +149,7 @@ function Topup() {
                 }}/>
                 {listSourceOfFund.length !== 0 ?
                     <MoneySource iconUrl={iconBank} name={listSourceOfFund[indexSource].bankCode}
-                                 swapIndexSource={() => swapIndexSource()}/>
+                                 swapIndexSource={() => swapIndexSource()} l4no={listSourceOfFund[indexSource].l4no}/>
                     : <EmptyMoneySource/>}
                 <NumPad onClick={() => {
                     console.log(phone, " ", listSourceOfFund[indexSource], " ", amount)

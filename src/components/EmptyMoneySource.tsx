@@ -16,7 +16,9 @@ function EmptyMoneySource(props: any) {
                         {"no source of fund"}
                     </div>
                 </div>
-                <img className={"h-2/3 mt-auto mb-auto"} src={AddCard} alt={"add card"} onClick={() => {navigate("/money-source")}}/>
+                <img className={"h-2/3 mt-auto mb-auto"} src={AddCard} alt={"add card"} onClick={() => {
+                    navigate("/money-source")
+                }}/>
             </div>
         </div>
     )

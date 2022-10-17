@@ -1,6 +1,4 @@
 import React, {ChangeEvent} from "react";
-import SwapIcon from "../resources/images/swap.png";
-import PropTypes from "prop-types";
 
 function handleFormatCardNumber(event: ChangeEvent<HTMLInputElement>) {
     let value = event.currentTarget.value.replaceAll(" ", "")
@@ -22,7 +20,6 @@ function AddMoneySource(props: any) {
                     placeholder={"1234 1234 1234 1234"}
                     onKeyDown={(event) => {
                         if (event.key == "Backspace") {
-
                         } else if (event.currentTarget.value.length > 16 + 2) {
                             event.preventDefault()
                         } else if (!/[0-9]/.test(event.key)) {
@@ -37,7 +34,6 @@ function AddMoneySource(props: any) {
                         props.setCardNumber(cardNumber);
                     }}
                 />
-
             </div>
         </div>
     )

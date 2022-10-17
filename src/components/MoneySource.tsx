@@ -1,14 +1,6 @@
-import React, {ChangeEvent} from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import SwapIcon from "../resources/images/swap.png"
-
-function handleFormatCardNumber(event: ChangeEvent<HTMLInputElement>) {
-    let value = event.currentTarget.value.replaceAll(" ", "")
-    for (let i = 4; i < value.length; i += 5) {
-        value = value.slice(0, i) + " " + value.slice(i)
-    }
-    event.currentTarget.value = value
-}
 
 function MoneySource(props: any) {
     return (
@@ -19,10 +11,11 @@ function MoneySource(props: any) {
                     <img className={"h-2/3 mt-auto mb-auto ml-3 mr-3"} src={props.iconUrl} alt={props.name}/>
                     <div
                         className={"w-full leading-10 text-base font-medium text-center text-slate-700 placeholder:text-sm outline-none "}>
-                        {props.name + " ***1234"}
+                        {props.name + " ***" + props.l4no}
                     </div>
                 </div>
-                <img className={"h-2/3 mt-auto mb-auto"} src={SwapIcon} alt={"swap icon"} onClick={props.swapIndexSource}/>
+                <img className={"h-2/3 mt-auto mb-auto"} src={SwapIcon} alt={"swap icon"}
+                     onClick={props.swapIndexSource}/>
                 {/*<input*/}
                 {/*    className={"w-2/3 leading-9 text-base font-medium text-center text-slate-700 placeholder:text-sm outline-none "}*/}
                 {/*    type={"text"}*/}
@@ -49,6 +42,7 @@ MoneySource.propTypes = {
     iconUrl: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
     swapIndexSource: PropTypes.func,
+    l4no: PropTypes.string.isRequired,
 }
 
 export default MoneySource;
