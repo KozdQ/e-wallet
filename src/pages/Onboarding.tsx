@@ -26,7 +26,8 @@ function Onboarding() {
                     onClick={() => navigate("/login")}/>
                 <Bottom
                     extraStyle={"ml-8 mr-8 bg-white text-black text-center font-bold border-2 border-black"}
-                    name={"Sign up"}/>
+                    name={"Sign up"}
+                    onClick={() => navigate("/signup")}/>
             </div>
 
         </div>

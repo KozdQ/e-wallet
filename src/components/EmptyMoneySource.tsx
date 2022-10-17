@@ -1,7 +1,10 @@
 import React from "react";
 import AddCard from "../resources/images/credit-card.png";
+import {useNavigate} from "react-router-dom";
 
 function EmptyMoneySource(props: any) {
+    const navigate = useNavigate();
+
     return (
         <div className={"mt-3"}>
             <div className={"text-xs font-semibold ml-2"}>Money Source</div>
@@ -13,7 +16,7 @@ function EmptyMoneySource(props: any) {
                         {"no source of fund"}
                     </div>
                 </div>
-                <img className={"h-2/3 mt-auto mb-auto"} src={AddCard} alt={"add card"}/>
+                <img className={"h-2/3 mt-auto mb-auto"} src={AddCard} alt={"add card"} onClick={() => {navigate("/money-source")}}/>
             </div>
         </div>
     )

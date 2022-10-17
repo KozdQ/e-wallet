@@ -24,13 +24,13 @@ function AmountInput(props: any) {
                 }}
                 onChange={(event) => {
                     handleFormatCurrency(event)
+                }}
+                onBlur={(event) => {
+                    const amount = event.currentTarget.value.replaceAll(".", "");
+                    props.setAmount(amount);
                 }}/>
         </div>
     )
-}
-
-AmountInput.propTypes = {
-
 }
 
 export default AmountInput;

@@ -27,7 +27,9 @@ function NumPad(props: any) {
             </div>
             <Bottom
                 extraStyle={"mt-5 bg-black text-white text-center font-bold"}
-                name={"Enter"}/>
+                name={"Enter"}
+                onClick={props.onClick}
+            />
         </div>
     )
 }

@@ -22,7 +22,7 @@ function MoneySource(props: any) {
                         {props.name + " ***1234"}
                     </div>
                 </div>
-                <img className={"h-2/3 mt-auto mb-auto"} src={SwapIcon} alt={"swap icon"}/>
+                <img className={"h-2/3 mt-auto mb-auto"} src={SwapIcon} alt={"swap icon"} onClick={props.swapIndexSource}/>
                 {/*<input*/}
                 {/*    className={"w-2/3 leading-9 text-base font-medium text-center text-slate-700 placeholder:text-sm outline-none "}*/}
                 {/*    type={"text"}*/}
@@ -47,7 +47,8 @@ function MoneySource(props: any) {
 
 MoneySource.propTypes = {
     iconUrl: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired
+    name: PropTypes.string.isRequired,
+    swapIndexSource: PropTypes.func,
 }
 
 export default MoneySource;

@@ -12,10 +12,12 @@ import axios from "axios";
 function Homepage() {
     const navigate = useNavigate();
     const phone = localStorage.getItem("phone");
+    const accessToken = localStorage.getItem("accessToken")
     const [amount, setAmount] = useState("0")
     const [listTrans, setListTrans] = useState([{
         "appTransId": "2022101400000002",
         "phone": "0969189947",
+        "reqDate": "1",
         "paymentInfo": "PaymentInfo(accessToken=MDk2OTE4OTk0Ny4xNjY1NzE5MTQxNjUw, phone=0969189947, appId=454, appTransId=2022101400000002, tranStatus=RECORD_BOOKKEEPING, reqDate=1665719146005, amount=10000, chargeInfo=xxx)",
         "amount": "10000"
     }])
@@ -27,9 +29,31 @@ function Homepage() {
         return amount;
     }
 
-    function date() {
-        return new Date(Date.now()).toLocaleDateString();
+    function date(time: String) {
+        return new Date(Number(time)).toLocaleDateString();
     }
+
+    useEffect(() => {
+        axios.post('http://localhost:8081/um/verify-access-token', {
+            phone: phone,
+            accessToken: accessToken,
+        }, {
+            headers: {
+                'Access-Control-Allow-Origin': '*',
+                'Content-Type': 'application/x-www-form-urlencoded',
+            }
+        })
+            .then(function (response) {
+                if (response.data === 0) {
+                    navigate("/login")
+                }
+                console.log(response)
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    })
+
     useEffect(() => {
         axios.post('http://localhost:8082/e-wallet/get-balance', {
             phone: phone,
@@ -112,7 +136,7 @@ function Homepage() {
                             key={e.appTransId}
                             iconUrl={PlusIcon}
                             name={"Top up the wallet from OCB"}
-                            date={date()}
+                            date={date(e.reqDate)}
                             amount={formatCurrency(e.amount)}/>)}
                     </div>
                 </div>

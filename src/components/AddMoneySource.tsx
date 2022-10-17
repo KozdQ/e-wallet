@@ -1,5 +1,6 @@
 import React, {ChangeEvent} from "react";
 import SwapIcon from "../resources/images/swap.png";
+import PropTypes from "prop-types";
 
 function handleFormatCardNumber(event: ChangeEvent<HTMLInputElement>) {
     let value = event.currentTarget.value.replaceAll(" ", "")
@@ -30,7 +31,12 @@ function AddMoneySource(props: any) {
                     }}
                     onChange={(event) => {
                         handleFormatCardNumber(event)
-                    }}/>
+                    }}
+                    onBlur={(event) => {
+                        const cardNumber = event.currentTarget.value.replaceAll(" ", "");
+                        props.setCardNumber(cardNumber);
+                    }}
+                />
 
             </div>
         </div>

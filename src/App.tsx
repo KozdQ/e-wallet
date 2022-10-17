@@ -20,6 +20,7 @@ function App() {
                 <Route path={"/topup"} element={<Topup/>}/>
                 <Route path={"/money-source"} element={<AddMoneySourcePage/>}/>
                 <Route path={"/receipt"} element={<Receipt/>}/>
+                <Route path={"/"} element={<Onboarding/>}/>
             </Routes>
         </BrowserRouter>
     );
