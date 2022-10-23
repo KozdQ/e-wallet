@@ -19,7 +19,7 @@ function AddMoneySource(props: any) {
                     type={"text"}
                     placeholder={"1234 1234 1234 1234"}
                     onKeyDown={(event) => {
-                        if (event.key == "Backspace") {
+                        if (event.key === "Backspace") {
                         } else if (event.currentTarget.value.length > 16 + 2) {
                             event.preventDefault()
                         } else if (!/[0-9]/.test(event.key)) {

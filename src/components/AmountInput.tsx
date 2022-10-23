@@ -16,7 +16,7 @@ function AmountInput(props: any) {
                 type={"text"}
                 placeholder={"amount"}
                 onKeyDown={(event) => {
-                    if (event.key == "Backspace") {
+                    if (event.key === "Backspace") {
 
                     } else if (!/[0-9]/.test(event.key)) {
                         event.preventDefault()
