@@ -32,8 +32,7 @@ function Topup() {
     const [listSourceOfFund, setListSourceOfFund] = useState([{
         "phone": "0969189947",
         "bankCode": "OCB",
-        "f6no": "123456",
-        "l4no": "1234"
+        "cardNumber": "1234561234561234",
     }])
     const [iconBank, setIconBank] = useState(OCB)
 
@@ -149,7 +148,7 @@ function Topup() {
                 }}/>
                 {listSourceOfFund.length !== 0 ?
                     <MoneySource iconUrl={iconBank} name={listSourceOfFund[indexSource].bankCode}
-                                 swapIndexSource={() => swapIndexSource()} l4no={listSourceOfFund[indexSource].l4no}/>
+                                 swapIndexSource={() => swapIndexSource()} l4no={listSourceOfFund[indexSource].cardNumber.slice(12, 16)}/>
                     : <EmptyMoneySource/>}
                 <NumPad onClick={() => {
                     console.log(phone, " ", listSourceOfFund[indexSource], " ", amount)
@@ -166,8 +165,8 @@ function Topup() {
                                 console.log(response)
                                 var chargeInfo = {
                                     "bankCode": listSourceOfFund[indexSource].bankCode,
-                                    "f6no": listSourceOfFund[indexSource].f6no,
-                                    "l4no": listSourceOfFund[indexSource].l4no
+                                    "f6no": listSourceOfFund[indexSource].cardNumber.slice(0, 6),
+                                    "l4no": listSourceOfFund[indexSource].cardNumber.slice(12, 16)
                                 }
                                 localStorage.setItem("bankCode", chargeInfo.bankCode);
                                 axios.post('http://localhost:8080/pe/submit-trans', {

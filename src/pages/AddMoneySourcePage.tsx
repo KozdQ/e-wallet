@@ -83,8 +83,7 @@ function AddMoneySourcePage() {
                         axios.post('http://localhost:8082/e-wallet/add-source-of-fund', {
                             phone: phone,
                             bankCode: bankCode,
-                            f6no: cardNumber.slice(0, 6),
-                            l4no: cardNumber.slice(12)
+                            cardNumber: cardNumber
                         }, {
                             headers: {
                                 'Access-Control-Allow-Origin': '*',

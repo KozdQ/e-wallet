@@ -18,7 +18,8 @@ function Homepage() {
         "appTransId": "2022101400000002",
         "phone": "0969189947",
         "reqDate": "1",
-        "paymentInfo": "PaymentInfo(accessToken=MDk2OTE4OTk0Ny4xNjY1NzE5MTQxNjUw, phone=0969189947, appId=454, appTransId=2022101400000002, tranStatus=RECORD_BOOKKEEPING, reqDate=1665719146005, amount=10000, chargeInfo=xxx)",
+        "status": "",
+        "extraInfo": "PaymentInfo(accessToken=MDk2OTE4OTk0Ny4xNjY1NzE5MTQxNjUw, phone=0969189947, appId=454, appTransId=2022101400000002, tranStatus=RECORD_BOOKKEEPING, reqDate=1665719146005, amount=10000, chargeInfo=xxx)",
         "amount": "10000"
     }])
 
